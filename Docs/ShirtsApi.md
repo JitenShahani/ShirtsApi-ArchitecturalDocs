@@ -999,21 +999,31 @@ Each API endpoint in the ShirtsController follows a structured flow from claim v
 
 ![GetShirts](Diagrams/GetShirts.Png)
 
+💡 **Summary**: Requires a valid JWT token with the `"read": "true"` claim. The `JWTAuthTokenFilterAttribute` validates the token and claims before allowing access. If authorized, returns a list of all shirts from the database.
+
 ### 📥 GET /api/shirts/{id}
 
 ![GetShirtById](Diagrams/GetShirtById.Png)
+
+💡 **Summary**: Requires a valid JWT token with the `"read": "true"` claim. The `JWTAuthTokenFilterAttribute` validates the token and claims. The `Shirt_ValidateShirtIdFilterAttribute` ensures the shirt exists. If not, returns 404. If both checks pass, returns the shirt details.
 
 ### 📤 POST /api/shirts
 
 ![CreateShirt](Diagrams/CreateShirt.Png)
 
+💡 **Summary**: Requires a valid JWT token with the `"write": "true"` claim. The `JWTAuthTokenFilterAttribute` validates the token and claims. The `Shirt_ValidateCreateShirtFilterAttribute` checks for duplicates and nulls. The `Shirt_EnsureCorrectSizingAttribute` enforces business rules on size. If all validations pass, creates a new shirt and returns 201 Created.
+
 ### ✏️ PUT /api/shirts/{id}
 
 ![UpdateShirt](Diagrams/UpdateShirt.Png)
 
+💡 **Summary**: Requires a valid JWT token with the `"write": "true"` claim. The `JWTAuthTokenFilterAttribute` validates the token and claims. The `Shirt_ValidateShirtIdFilterAttribute` ensures the shirt exists. The `Shirt_ValidateUpdateShirtFilterAttribute` checks that the route and body IDs match. The `Shirt_EnsureCorrectSizingAttribute` enforces size rules. The `Shirt_HandleUpdateExceptionFilterAttribute` catches update errors. If all checks pass, updates the shirt and returns 204 No Content.
+
 ### 🗑️ DELETE /api/shirts/{id}
 
 ![DeleteShirt](Diagrams/DeleteShirt.Png)
+
+💡 **Summary**: Requires a valid JWT token with the `"delete": "true"` claim. The `JWTAuthTokenFilterAttribute` validates the token and claims. The `Shirt_ValidateShirtIdFilterAttribute` ensures the shirt exists. If not, returns 404. If checks pass, deletes the shirt and returns 200 OK with the deleted shirt details.
 
 ## 📖 Mini Glossary
 
