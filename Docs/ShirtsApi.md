@@ -440,6 +440,7 @@ public sealed class Shirt
     public double? Price { get; set; }
 }
 ```
+🧠 **Purpose**: Defines the data structure of a shirt and applies field-level validation using attributes.
 
 ### ✅ Shirt_EnsureCorrectSizingAttribute.cs
 
