@@ -19,17 +19,17 @@ ShirtsApi/
 │   └── RequiredClaimAttribute.cs				# Declarative claim contract
 │
 ├── Authority/
-│   ├── AppCredential.cs						# Represents client-provided Id/secret
-│   ├── Application.cs							# Static configuration model for client identity
-│   ├── AppRepository.cs						# Performs credential validation logic
-│   └── Authenticator.cs						# Handles JWT creation and verification
+│   ├── AppCredential.cs					# Represents client-provided Id/secret
+│   ├── Application.cs						# Static configuration model for client identity
+│   ├── AppRepository.cs					# Performs credential validation logic
+│   └── Authenticator.cs					# Handles JWT creation and verification
 │
 ├── Controllers/
-│   ├── ShirtsController.cs						# Main CRUD controller
+│   ├── ShirtsController.cs					# Main CRUD controller
 │   └── AuthorityController.cs					# Issues JWT tokens
 │
 ├── Data/
-│   └── AppDbContext.cs							# EF Core context setup
+│   └── AppDbContext.cs						# EF Core context setup
 │
 ├── Filters/
 │   ├── ActionFilters/
@@ -44,13 +44,13 @@ ShirtsApi/
 │       └── Shirt_HandleUpdateExceptionFilterAttribute.cs
 │
 ├── Models/
-│   └── Shirt.cs								# Domain model with validation
+│   └── Shirt.cs						# Domain model with validation
 │
 ├── Validations/
-│   └── Shirt_EnsureCorrectSizingAttribute.cs	# Custom business rule
+│   └── Shirt_EnsureCorrectSizingAttribute.cs			# Custom business rule
 │
-├── Program.cs									# App startup entry
-├── appsettings.json							# Configuration file
+├── Program.cs							# App startup entry
+├── appsettings.json						# Configuration file
 ```
 
 🧠 **What This Teaches**
