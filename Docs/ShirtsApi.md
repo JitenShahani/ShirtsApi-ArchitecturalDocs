@@ -995,7 +995,7 @@ Each API endpoint in the ShirtsController follows a structured flow from claim v
 - Alternate paths (e.g., 400/404) are shown as branches.
 - JWT validation + RequiredClaim checks are the first gate every request must pass.
 
-📂 [View Mermaid source definitions](MermaidDefinitions/MermaidDefinitions.md)
+📂 [Source Code to generate below sequence diagrams](MermaidDefinitions/MermaidDefinitions.md)
 
 ### 📥 GET /api/shirts
 
