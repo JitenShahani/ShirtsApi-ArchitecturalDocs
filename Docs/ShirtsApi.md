@@ -707,7 +707,7 @@ public class JWTAuthTokenFilterAttribute : Attribute, IAsyncAuthorizationFilter
 }
 ```
 
-🧠 **Purpose**: This filter runs globally on controllers and validates every request's JWT token.
+🧠 **Purpose**: Validates incoming JWT tokens and enforces required claims on secured endpoints. Returns a 401 Unauthorized for missing or invalid tokens, and a 403 Forbidden if claim requirements aren't met.
 
 🧠 **How It Works**
 
