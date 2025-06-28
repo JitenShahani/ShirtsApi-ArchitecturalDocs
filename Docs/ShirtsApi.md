@@ -644,7 +644,7 @@ public class Shirt_HandleUpdateExceptionFilterAttribute : ExceptionFilterAttribu
 }
 ```
 
-🧠 **Purpose**: Catches any unhandled error during an update and returns a structured error response instead of crashing the pipeline.
+🧠 **Purpose**: Detects and gracefully handles rare race conditions where the shirt targeted for update is deleted during the request lifecycle. Returns a structured 404 Not Found response instead of allowing a generic exception to propagate.
 
 ### ✅ JWTAuthTokenFilterAttribute.cs
 
