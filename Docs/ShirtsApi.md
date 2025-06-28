@@ -233,7 +233,6 @@ public static class Authenticator
 			}
 		}
 
-
 		var tokenDescriptor = new SecurityTokenDescriptor
 		{
 			SigningCredentials = signingCredentials,
@@ -562,7 +561,7 @@ public class Shirt_ValidateUpdateShirtFilterAttribute : ActionFilterAttribute
 }
 ```
 
-🧠 **Purpose**: Ensures a shirt exists before updating. Shares the record via HttpContext.Items["Shirt"] to avoid repeat database queries.
+🧠 **Purpose**: Ensures the id in the route matches the ShirtId in the request body to prevent inconsistent or accidental updates.
 
 ### 🧪 Shirt_ValidateShirtIdFilterAttribute.cs
 
