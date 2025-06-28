@@ -309,20 +309,43 @@ public static class Authenticator
 | CreateToken		| Generates a JWT with dynamic claims based on the app's allowed scopes	|
 | VerifyTokenAsync	| Validates a JWT’s signature, lifetime, and content using a shared key	|
 
-### 🔐 How Scopes Become Claims
+### 🔐 How Scopes Become Claims (with JWT Sample)
 
-The Scopes string from each Application (e.g., "read,write,delete") is split and converted into claims:
+When an application requests an access token, its assigned scopes (like read, write, delete) are split and **converted into individual claims** within the JWT payload. These claims drive endpoint-level authorization in the API.
+
+Here’s a real example of a decoded JWT used in this project:
+
+#### Decoded JWT Header
 
 ```json
 {
-  "AppName": "MVCWebApp",
-  "read": "true",
-  "write": "true",
-  "delete": "true"
+  "alg": "HS256",
+  "typ": "JWT"
 }
 ```
 
-These claims drive authorization checks later using [RequiredClaim("write", "true")].
+#### Decoded JWT Payload
+
+```json
+{
+  "exp": 1750498873,
+  "nbf": 1750498273,
+  "AppName": "MVCWebApp",
+  "Read": "true",
+  "Write": "true",
+  "iat": 1750498273
+}
+```
+
+📌 **Note**: This sample token includes only Read and Write claims, which are sufficient for GET and POST operations demonstrated early in the course. The Delete claim is intentionally omitted here to reflect a more restricted token. It will be introduced later when demonstrating secured DELETE requests, where elevated permissions are required. [Inspect and decode JWTs](https://jwt.io/) for visual workflows.
+
+#### 🔎 How This Connects to Filters
+
+The `JWTAuthTokenFilterAttribute` extracts these claims and validates them against [RequiredClaim("ClaimType", "ClaimValue")] annotations on each controller action. For example:
+
+```csharp
+[RequiredClaim("Write", "true")]
+```
 
 ## 🛡️ **Authorization Filters & Claim Processing**
 
