@@ -18,8 +18,6 @@ An ASP.NET Core Web API featuring clean controller logic, structured validation,
 - Custom validation rules and response shaping
 - Database-first CRUD operations
 
-## 🕘 Recent Commits
-<!-- LATESTCOMMIT:START -->
-<!-- LATESTCOMMIT:END -->
+---
 
 Built with care by [Jiten Shahani](https://github.com/JitenShahani)
