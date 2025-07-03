@@ -97,12 +97,19 @@ builder.Services
     .AddControllers()
     .AddJsonOptions(options =>
     {
-        // Default property names to PascalCase
-        options.JsonSerializerOptions.PropertyNamingPolicy = null;
-        // Make property names case-insensitive
-        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-        // Ignore EF Core cycles
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+	// Configure JSON serializer to ignore null values during serialization
+	options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+	// Configure JSON serializer to use Pascal case for property names during serialization
+	options.JsonSerializerOptions.PropertyNamingPolicy = null;
+	// Configure JSON serializer to use Pascal case for key's name during serialization
+	options.JsonSerializerOptions.DictionaryKeyPolicy = null;
+	// Ensure JSON property names are not case-sensitive during deserialization
+	options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+	// Prevent serialization issues caused by cyclic relationships in EF Core entities
+	options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+	// Ensure the JSON output is consistently formatted for readability.
+	// Not to be used in Production as the response message size could be large.
+	// options.JsonSerializerOptions.WriteIndented = true;
     });
 
 builder.Services.AddOpenApi();
